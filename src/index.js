@@ -50,12 +50,12 @@ function randomInteger(min, max) {
 function setDelay(difficulty) {
   if (difficulty === "easy") {
     return 1500;
-    } else if (difficulty === "normal") {
+  } else if (difficulty === "normal") {
     return 1000;
-    } else if (difficulty === "hard") {
-      return randomInteger(600, 1000); 
-    }
+  } else if (difficulty === "hard") {
+    return randomInteger(600, 1200);
   }
+}
 
 /**
  * Chooses a random hole from a list of holes.
@@ -110,15 +110,15 @@ function chooseHole(holes) {
 
 //Calls the showUp function if time > 0 and stops the game if time = 0
 function gameOver() {
-  // TODO: Write your code here
   let gameStopped;
   if (time > 0) {
     let timeoutID = showUp();
     return timeoutID;
   } else {
-    let gameStopped = stopGame();
-    return gameStopped;
+    gameStopped = stopGame();
   }
+  removePreviousDragon();
+  return gameStopped;
 }
 
 /**
@@ -308,8 +308,8 @@ function setDuration(duration) {
 */
 
 //Stops the game
-function stopGame(){
-  // stopAudio(song);  //optional
+function stopGame() {
+  stopAudio(song); //optional
   clearInterval(timer);
   return "game stopped";
 }
@@ -322,14 +322,36 @@ function stopGame(){
 */
 
 //Starts the game
-function startGame(){
+function startGame() {
+  clearScore();
   setDuration(10);
+  startTimer();
   showUp();
+  setEventListeners();
+  spriteEventListeners();
+  play();
   return "game started";
 }
-
 startButton.addEventListener("click", startGame);
 
+//Sets difficulty based on user selection/click
+function setDifficulty(selectedDifficulty) {
+  difficulty = selectedDifficulty;
+}
+
+function difficultyEventListener() {
+  easyButton.addEventListener("click", function () {
+    setDifficulty("easy");
+  });
+
+  normalButton.addEventListener("click", function () {
+    setDifficulty("normal");
+  });
+
+  hardButton.addEventListener("click", function () {
+    setDifficulty("hard");
+  });
+}
 
 // Please do not modify the code below.
 // Used for testing purposes.
