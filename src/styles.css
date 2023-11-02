@@ -1,6 +1,6 @@
 html {
   /*background: url('./assets/background.png') no-repeat center center fixed;*/
-  background: url('https://github.com/Thinkful-Ed/js-dev-final-capstone-starter/blob/main/assets/background.png?raw=true') no-repeat center center fixed;
+  background: url('https://github.com/Thinkful-Ed/js-dev-final-capstone-starter/blob/main/assets/galaxy.jpg?raw=true') no-repeat center center fixed;
   box-sizing: border-box;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -10,37 +10,47 @@ html {
   overflow: hidden;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+}
+
 h1 {
   text-align: center;
   font-size: 90px;
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
-  color: white;
+  font-family: "Lucida Bright", "Comic Sans", cursive;
+  color: #127acf;
   -webkit-text-stroke: 2px black;
 }
 
 h2 {
   text-align: center;
-  font-size: 40px;
-  color: white;
+  font-family: "Lucida Bright", "Comic Sans", cursive;
+  font-size: 30px;
+  color: #127acf;
   -webkit-text-stroke: 1px black;
 }
 
 #start {
+    background-color: #042f64;
     text-align: center;
     font-size: 30px;
+    color: #fff;
+    font-family: "Lucida Bright", "Comic Sans";
 }
 
 #timer{
-    color: white;
+    color: #127acf;
+    -webkit-text-stroke: 2px black;
 }
 
 .grid {
-  width: 600px;
+  width: 1000px;
   height: 400px;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   margin: 0 auto;
-  /*cursor: url('./assets/mallet.png'), pointer;*/
+  cursor: url('./assets/hammer.jpg'), pointer;
 }
 
 .hole {
@@ -51,8 +61,8 @@ h2 {
 
 .hole:after {
   display: block;
-  /*background: url("./assets/hole.png") bottom center no-repeat;*/
-  background: url("https://github.com/Thinkful-Ed/js-dev-final-capstone-starter/blob/main/assets/hole.png?raw=true") bottom center no-repeat;
+  /*background: url("./assets/powder-mist.jpg") bottom center no-repeat;*/
+  background: url("https://github.com/Thinkful-Ed/js-dev-final-capstone-starter/blob/main/assets/powder-mist.jpg=true") bottom center no-repeat;
   background-size:contain;
   content:'';
   width: 100%;
@@ -63,9 +73,9 @@ h2 {
   pointer-events:none;
 }
 
-.mole {
+.star {
   /*background:url('./assets/mole.png') bottom center no-repeat;*/
-  background:url('https://github.com/Thinkful-Ed/js-dev-final-capstone-starter/blob/main/assets/mole.png?raw=true') bottom center no-repeat;
+  background:url('https://github.com/Thinkful-Ed/js-dev-final-capstone-starter/blob/main/assets/blue-star.png?raw=true') bottom center no-repeat;
   background-size: 40%;
   position: absolute;
   top: 100%;
@@ -76,7 +86,36 @@ h2 {
   pointer-events:auto;
 }
 
-.hole.show .mole {
+.sprite {
+  /*background:url('./assets/mole.png') bottom center no-repeat;*/
+  background:url('https://github.com/Thinkful-Ed/js-dev-final-capstone-starter/blob/main/assets/silver-star.png?raw=true')
+  bottom center no-repeat;
+  background-size: 40%;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  height: 100%;
+  transition: all 1s;
+  pointer-events: auto;
+}
+
+.hole.show .star {
   top: 0;
   /*transform: scale(1.1);*/
+}
+
+#starterBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#easyLevel,
+#normalLevel,
+#hardLevel {
+    background-color: #5390d9;
+  color: #fff;
+  font-size: 20px;
+  font-family: "Lucida Bright", "Comic Sans";
 }
