@@ -88,7 +88,7 @@ h2 {
 
 .sprite {
   /*background:url('./assets/mole.png') bottom center no-repeat;*/
-  background:url('https://github.com/JoseMIbarra/js-dev-final-capstone-starter-whack-a-mole/blob/main/assets/yellow-star.jpg?raw=true') bottom center no-repeat
+  background:url('https://github.com/JoseMIbarra/js-dev-final-capstone-starter-whack-a-mole/blob/main/assets/yellow-star.jpg?raw=true')
   bottom center no-repeat;
   background-size: 40%;
   position: absolute;
