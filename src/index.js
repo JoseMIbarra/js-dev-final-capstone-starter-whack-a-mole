@@ -1,9 +1,9 @@
 const holes = document.querySelectorAll('.hole');
-const moles = document.querySelectorAll('.mole');
+const stars = document.querySelectorAll(".star");
 const startButton = document.querySelector('#start');
 // TODO: Add the missing query selectors:
-const score = document.querySelector('#timer'); // Use querySelector() to get the score element
-const timerDisplay = document.querySelector('#timerDisplay'); // use querySelector() to get the timer element.
+const score = document.querySelector('#score'); // Use querySelector() to get the score element
+const timerDisplay = document.querySelector('#timer'); // use querySelector() to get the timer element.
 const easyButton = document.querySelector('#easyLevel');
 const normalButton = document.querySelector('#normalLevel');
 const hardButton = document.querySelector('#hardLevel');
@@ -50,12 +50,12 @@ function randomInteger(min, max) {
 function setDelay(difficulty) {
   if (difficulty === "easy") {
     return 1500;
-  } else if (difficulty === "normal") {
+    } else if (difficulty === "normal") {
     return 1000;
-  } else if (difficulty === "hard") {
-    return randomInteger(600, 1200);
+    } else if (difficulty === "hard") {
+      return randomInteger(600, 1200); 
+    }
   }
-}
 
 /**
  * Chooses a random hole from a list of holes.
@@ -115,9 +115,9 @@ function gameOver() {
     let timeoutID = showUp();
     return timeoutID;
   } else {
-    gameStopped = stopGame();
+    let gameStopped = stopGame();
   }
-  removePreviousDragon();
+  removePreviousStar();
   return gameStopped;
 }
 
@@ -168,14 +168,32 @@ function showAndHide(hole, delay){
 
 //Adds or removes the 'show' class that is defined in styles.css to a given hole. It returns the hole.
 function toggleVisibility(hole){
-  // TODO: add hole.classList.toggle so that it adds or removes the 'show' class.
-  hole = chooseHole(holes);
+  removePreviousStar();
+  let decision = starOrSpriteRandomizer();
   if (decision === "sprite") {
     hole.classList.toggle("show-sprite");
   } else {
     hole.classList.toggle("show");
   }
   return hole;
+}
+
+//Removes a star when a new one is revealed
+function removePreviousStar() {
+  holes.forEach((hole) => hole.classList.remove("show"));
+  holes.forEach((hole) => hole.classList.remove("show-sprite"));
+}
+
+// Picks a star or sprite at random
+function starOrSpriteRandomizer(){
+  let randomizer = randomInteger(0, 100);
+  let outcome = " ";
+  if (randomizer >= 65) {
+    outcome ="sprite";
+  } else {
+   outcome = "star";
+  }
+  return outcome;
 }
 
 
@@ -191,16 +209,11 @@ function toggleVisibility(hole){
 */
 
 //Updates the score
-function updateScore(strike) {
-  // TODO: Write your code here
-  if (strike === "sprite") {
-    points += 5;
-  } else {
-    points =+1;
-  }
-    score.textContent = points;
+function updateScore() {
+  points += 1; 
+  score.textContent = points;
   return points;
-}
+  }
 
 /**
 *
@@ -212,7 +225,6 @@ function updateScore(strike) {
 
 //Clears the score
 function clearScore() {
-  // TODO: Write your code here
   points = 0;
   score.textContent = points;
   return points;
@@ -226,7 +238,6 @@ function clearScore() {
 
 //Updates thetimer
 function updateTimer() {
-  // TODO: Write your code here.
   // hint: this code is provided to you in the instructions.
   if (time > 0) {
     time -=1;
@@ -244,7 +255,6 @@ function updateTimer() {
 
 //Starts the timer
 function startTimer() {
-  // TODO: Write your code here
   timer = setInterval(updateTimer, 1000);
   return timer;
 }
@@ -262,8 +272,15 @@ function startTimer() {
 function whack(event) {
   // TODO: Write your code here.
   // call updateScore()
-  console.log("WHACK!");
-  updateScore();
+    updateScore("star");
+    console.log("STAR WHACKED");
+     return points;
+  }
+
+//Whacks a sprite
+function whackSprite(event) {
+  updateScore("sprite");
+  console.log("SPRITE WHACKED");
   return points;
 }
 
@@ -276,15 +293,14 @@ function whack(event) {
 //Allows you to click on a star
 function setEventListeners(){
   // TODO: Write your code here
-  stars.forEach(star => star.addEventListener('click', whack)
-  );
+  stars.forEach((star) => star.addEventListener("click", whack));
   return stars;
 }
 
 //Allows you to click on a sprite
-function spriteEventListener() {
-  spriteEventListener.forEach((sprite) =>sprite.addEventListener('click', whackSprite));
-  return spriteEventListener;
+function spriteEventListeners() {
+  sprites.forEach((sprite) =>sprite.addEventListener("click", whackSprite));
+  return sprites;
 }
 
 /**
@@ -308,8 +324,8 @@ function setDuration(duration) {
 */
 
 //Stops the game
-function stopGame() {
-  stopAudio(song); //optional
+function stopGame(){
+  // stopAudio(song);  //optional
   clearInterval(timer);
   return "game stopped";
 }
@@ -322,7 +338,7 @@ function stopGame() {
 */
 
 //Starts the game
-function startGame() {
+function startGame(){
   clearScore();
   setDuration(10);
   startTimer();
@@ -332,6 +348,8 @@ function startGame() {
   play();
   return "game started";
 }
+
+//Allows you to start the game
 startButton.addEventListener("click", startGame);
 
 //Sets difficulty based on user selection/click
@@ -352,6 +370,31 @@ function difficultyEventListener() {
     setDifficulty("hard");
   });
 }
+
+difficultyEventListener();
+
+
+
+const audioHit = new Audio("https://github.com/JoseMIbarra/js-dev-final-capstone-starter-whack-a-mole/blob/main/assets/hit.mp3?raw=true");
+const song = new Audio("https://github.com/JoseMIbarra/js-dev-final-capstone-starter-whack-a-mole/blob/main/assets/molesong.mp3?raw=true");
+
+function playAudio(audioObject) {
+  audioObject.play();
+}
+
+function loopAudio(audioObject) {
+  audioObject.loop = true;
+  playAudio(audioObject);
+}
+
+function stopAudio(audioObject) {
+  audioObject.pause();
+}
+
+function play(){
+  playAudio(song);
+}
+
 // Please do not modify the code below.
 // Used for testing purposes.
 window.randomInteger = randomInteger;
