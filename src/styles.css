@@ -50,7 +50,7 @@ h2 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   margin: 0 auto;
-  cursor: url('https://github.com/JoseMIbarra/js-dev-final-capstone-starter-whack-a-mole/blob/main/assets/assets/mallet.png'), pointer;
+  cursor: url('https://github.com/JoseMIbarra/js-dev-final-capstone-starter-whack-a-mole/blob/main/assets/assets/mallet.png?raw=true'), pointer;
 }
 
 .hole {
@@ -62,7 +62,7 @@ h2 {
 .hole:after {
   display: block;
   /*background: url("./assets/powder-mist.jpg") bottom center no-repeat;*/
-  background: url('https://github.com/JoseMIbarra/js-dev-final-capstone-starter-whack-a-mole/blob/main/assets/powder-mist.jpg') bottom center no-repeat;
+  background: url('https://github.com/JoseMIbarra/js-dev-final-capstone-starter-whack-a-mole/blob/main/assets/powder-mist.jpg?raw=true') bottom center no-repeat;
   background-size:contain;
   content:'';
   width: 100%;
@@ -75,7 +75,7 @@ h2 {
 
 .star {
   /*background:url('./assets/mole.png') bottom center no-repeat;*/
-  background:url('https://github.com/JoseMIbarra/js-dev-final-capstone-starter-whack-a-mole/blob/main/assets/blue-star.png') bottom center no-repeat;
+  background:url('https://github.com/JoseMIbarra/js-dev-final-capstone-starter-whack-a-mole/blob/main/assets/blue-star.png?raw=true') bottom center no-repeat;
   background-size: 40%;
   position: absolute;
   top: 100%;
@@ -88,7 +88,7 @@ h2 {
 
 .sprite {
   /*background:url('./assets/mole.png') bottom center no-repeat;*/
-  background:url('https://github.com/JoseMIbarra/js-dev-final-capstone-starter-whack-a-mole/blob/main/assets/silver-star.png')
+  background:url('https://github.com/JoseMIbarra/js-dev-final-capstone-starter-whack-a-mole/blob/main/assets/silver-star.png?raw=true')
   bottom center no-repeat;
   background-size: 40%;
   position: absolute;
