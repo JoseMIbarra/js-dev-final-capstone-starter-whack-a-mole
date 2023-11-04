@@ -7,7 +7,7 @@ const timerDisplay = document.querySelector('#timer'); // use querySelector() to
 const easyButton = document.querySelector('#easyLevel');
 const normalButton = document.querySelector('#normalLevel');
 const hardButton = document.querySelector('#hardLevel');
-
+const sprites = document.querySelectorAll(".sprite"); // use querySelectorAll() to get all sprite elements
 
 let time = 0;
 let timer;
