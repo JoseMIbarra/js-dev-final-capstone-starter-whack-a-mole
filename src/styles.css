@@ -35,7 +35,7 @@ h2 {
     background-color: #09aec4;
     text-align: center;
     font-size: 30px;
-    color: #fff;
+    color: #000000;
     font-family: "Lucida Bright", "Comic Sans";
 }
 
@@ -115,7 +115,7 @@ h2 {
 #normalLevel,
 #hardLevel {
     background-color: #5390d9;
-  color: #fff;
+  color: #000000;
   font-size: 20px;
   font-family: "Lucida Bright", "Comic Sans";
 }
